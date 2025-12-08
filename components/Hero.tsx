@@ -6,27 +6,66 @@ import { PROFILE_DATA } from '../constants';
 const Hero: React.FC = () => {
   const { name, title, summary, contact, profileImage, resumeUrl } = PROFILE_DATA;
   
-  // Use the image from constants, or fallback to a placeholder if not defined
-  const [currentImage, setCurrentImage] = useState(
-    profileImage || "./images/profile.jpg"
-  );
+  // Use localStorage to persist the image and CV across reloads
+  // Fallback to constants if nothing is saved
+  const [currentImage, setCurrentImage] = useState(() => {
+    try {
+      const saved = localStorage.getItem('portfolio_profile_image');
+      return saved || profileImage || "./images/profile.jpg";
+    } catch (e) {
+      return profileImage || "./images/profile.jpg";
+    }
+  });
 
-  // State for the CV URL to allow dynamic updates
-  const [cvUrl, setCvUrl] = useState(resumeUrl || "/cv.pdf");
+  const [cvUrl, setCvUrl] = useState(() => {
+    try {
+      const saved = localStorage.getItem('portfolio_resume_cv');
+      return saved || resumeUrl || "/cv.pdf";
+    } catch (e) {
+      return resumeUrl || "/cv.pdf";
+    }
+  });
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const convertToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setCurrentImage(imageUrl);
+      try {
+        const base64 = await convertToBase64(file);
+        setCurrentImage(base64);
+        try {
+          localStorage.setItem('portfolio_profile_image', base64);
+        } catch (e) {
+          alert("Image is too large to save permanently. It will be visible for this session only.");
+        }
+      } catch (error) {
+        console.error("Error processing image file", error);
+      }
     }
   };
 
-  const handleCvUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCvUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const newCvUrl = URL.createObjectURL(file);
-      setCvUrl(newCvUrl);
+      try {
+        const base64 = await convertToBase64(file);
+        setCvUrl(base64);
+        try {
+          localStorage.setItem('portfolio_resume_cv', base64);
+        } catch (e) {
+          alert("PDF is too large to save permanently. It will be available for this session only.");
+        }
+      } catch (error) {
+        console.error("Error processing CV file", error);
+      }
     }
   };
 
@@ -71,7 +110,7 @@ const Hero: React.FC = () => {
                   Download CV
                 </a>
                 
-                <label className="flex items-center justify-center w-12 bg-white border border-slate-200 text-slate-500 rounded-lg hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 transition-all cursor-pointer" title="Upload CV (PDF) for Preview">
+                <label className="flex items-center justify-center w-12 bg-white border border-slate-200 text-slate-500 rounded-lg hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 transition-all cursor-pointer" title="Upload CV (PDF) to save">
                   <Upload size={20} />
                   <input 
                     type="file" 
