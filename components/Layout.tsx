@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Instagram, Twitter, Send } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Instagram, Twitter, Send, UserCog } from 'lucide-react';
 import { PROFILE_DATA } from '../constants';
+import { useNavigate } from 'react-router-dom';
+import { usePortfolio } from '../context/PortfolioContext';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,6 +17,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     message: ''
   });
 
+  const navigate = useNavigate();
+  const { isAuthenticated } = usePortfolio();
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -23,15 +28,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
     e.preventDefault();
     setIsMenuOpen(false);
 
+    // If it's a route (starts with /), navigate there
+    if (href.startsWith('/')) {
+      navigate(href);
+      return;
+    }
+
+    // If it's an anchor (starts with #), scroll to it
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
 
     if (element) {
-      // Offset calculation to account for fixed header
       const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
@@ -53,7 +64,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     alert(`Thank you, ${formState.name}! Your message has been received.`);
     setFormState({ name: '', email: '', message: '' });
   };
@@ -91,6 +101,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {link.name}
               </a>
             ))}
+            
+            {/* Admin Tab */}
+            <button 
+              onClick={() => navigate(isAuthenticated ? '/admin/dashboard' : '/admin')}
+              className={`flex items-center gap-1 text-sm font-medium transition-colors ${isAuthenticated ? 'text-blue-600' : 'text-slate-500 hover:text-slate-800'}`}
+            >
+              {isAuthenticated ? 'Dashboard' : 'Admin'}
+            </button>
+
             <a 
               href={`mailto:${PROFILE_DATA.contact.email}`}
               className="px-5 py-2.5 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition-colors"
@@ -121,6 +140,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {link.name}
               </a>
             ))}
+            
+            <button 
+              onClick={() => {
+                navigate(isAuthenticated ? '/admin/dashboard' : '/admin');
+                setIsMenuOpen(false);
+              }}
+              className="text-slate-600 font-medium py-2 text-left flex items-center gap-2"
+            >
+              <UserCog size={16} />
+              {isAuthenticated ? 'Dashboard' : 'Admin Login'}
+            </button>
+
              <a 
               href={`mailto:${PROFILE_DATA.contact.email}`}
               className="px-5 py-2.5 bg-blue-600 text-white text-center font-medium rounded-lg"
@@ -240,8 +271,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
           </div>
 
-          <div className="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
             <p>&copy; {new Date().getFullYear()} Rifath Ahamed. All rights reserved.</p>
+            <div className="flex gap-4">
+              <button onClick={() => navigate('/admin')} className="hover:text-blue-500 transition-colors">Admin Login</button>
+            </div>
           </div>
         </div>
       </footer>

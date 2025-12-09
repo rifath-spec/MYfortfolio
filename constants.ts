@@ -6,7 +6,7 @@ export const PROFILE_DATA: ProfileData = {
   title: "Management & IT Professional",
   summary: "Dedicated and results-oriented Management and IT professional with strong experience in project coordination, team supervision, and IT operations. Adept at managing workflows, planning schedules, and aligning technology with organizational goals. Skilled in database management, software support, route scheduling, and process optimization. A confident communicator and leader who bridges technical and administrative functions effectively.",
   // Replace this URL with your local file path (e.g., './images/profile.jpg') or your own photo URL
-  profileImage: "/images/profile image.png",
+  profileImage: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/profile%20image.png",
   // Place your PDF in the 'public' folder and name it 'cv.pdf'
   resumeUrl: "/cv.pdf",
   contact: {

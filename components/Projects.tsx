@@ -1,20 +1,9 @@
-import React, { useState } from 'react';
-import { Code2, ArrowUpRight, Github, ExternalLink, Image as ImageIcon, Upload } from 'lucide-react';
-import { PROFILE_DATA } from '../constants';
+import React from 'react';
+import { Code2, ArrowUpRight, Github, ExternalLink, Image as ImageIcon } from 'lucide-react';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Projects: React.FC = () => {
-  // Use local state to allow updating images for preview
-  const [projects, setProjects] = useState(PROFILE_DATA.projects);
-
-  const handleImageUpload = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      const newProjects = [...projects];
-      newProjects[index] = { ...newProjects[index], image: imageUrl };
-      setProjects(newProjects);
-    }
-  };
+  const { profileData } = usePortfolio();
 
   return (
     <section id="projects" className="py-20 bg-slate-50">
@@ -25,12 +14,12 @@ const Projects: React.FC = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {profileData.projects.map((project, index) => (
             <div key={index} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col">
               
-              {/* Image Section with Upload Capability */}
+              {/* Image Section */}
               <div className="relative h-48 w-full overflow-hidden bg-slate-100 border-b border-slate-50 group/image">
-                <label htmlFor={`project-img-${index}`} className="block w-full h-full cursor-pointer relative">
+                <div className="block w-full h-full relative">
                   
                   {/* Image Display */}
                   <img 
@@ -53,26 +42,9 @@ const Projects: React.FC = () => {
                   >
                     <div className="flex flex-col items-center gap-2">
                       <ImageIcon size={48} className="opacity-50" />
-                      <span className="text-sm font-medium opacity-70">Add Project Image</span>
                     </div>
                   </div>
-
-                  {/* Upload Overlay (Visible on Hover) */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <div className="bg-white p-3 rounded-full text-blue-600 shadow-lg transform scale-90 group-hover/image:scale-100 transition-transform">
-                      <Upload size={20} />
-                    </div>
-                  </div>
-                </label>
-
-                {/* Hidden File Input */}
-                <input 
-                  type="file" 
-                  id={`project-img-${index}`}
-                  className="hidden" 
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(index, e)}
-                />
+                </div>
               </div>
 
               <div className="p-8 flex-1 flex flex-col">
