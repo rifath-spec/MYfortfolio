@@ -8,7 +8,7 @@ export const PROFILE_DATA: ProfileData = {
   // Replace this URL with your local file path (e.g., './images/profile.jpg') or your own photo URL
   profileImage: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/profile%20image.png",
   // Place your PDF in the 'public' folder and name it 'cv.pdf'
-  resumeUrl: "/cv.pdf",
+  resumeUrl: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-cv/Rifath%20Ahamed%20CV.pdf",
   contact: {
     phone: "075 092 7652",
     email: "arifath98@gmail.com",
@@ -101,7 +101,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#",
       demoUrl: "https://webbasedrenovation.infinityfree.me/index.php",
-      image: "https://images.unsplash.com/photo-1581094794329-cd11965d2822?fit=crop&w=800&q=80" 
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/img.png" 
     },
     {
       title: "FMC GPA Calculator",
@@ -112,7 +112,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#",
       demoUrl: "https://fmcs-gpa.vercel.app/",
-      image: "https://images.unsplash.com/photo-1587145820266-a5951eebebb1?fit=crop&w=800&q=80"
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/Screenshot%202025-12-09%20215927.png"
     },
     {
       title: "AI Vital - Resource Hub",
@@ -123,7 +123,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#",
       demoUrl: "https://ai-vital-zeta.vercel.app/",
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?fit=crop&w=800&q=80"
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/ai.png"
     }
   ],
   skills: [
