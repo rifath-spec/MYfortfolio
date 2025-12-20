@@ -3,7 +3,7 @@ import { ProfileData } from './types';
 
 export const PROFILE_DATA: ProfileData = {
   name: "Rifath Ahamed",
-  title: "IT & Operations Coordinator | Web & Business Systems Developer",
+  title: "IT Graduate – IT & Operations | MIS, HR & Financial Support | Web & Business Systems Development",
   summary: "Results-driven IT & Operations specialist with a BSc in Management and Information Technology. I bridge the gap between complex technical infrastructure and strategic management to optimize organizational workflows. Expert in building bespoke MIS solutions, automating administrative processes, and coordinating large-scale logistics and construction projects.",
   profileImage: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/profile%20image.png",
   resumeUrl: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-cv/Rifath%20Ahamed%20CV.pdf",

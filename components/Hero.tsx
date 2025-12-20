@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Download, Camera, ChevronRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Download, Camera, ChevronRight, MessageSquare } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,11 @@ const Hero: React.FC = () => {
   const { profileData } = usePortfolio();
   const { name, title, summary, contact, profileImage, resumeUrl } = profileData;
   const navigate = useNavigate();
+
+  // Construct WhatsApp URL (Sri Lanka code +94)
+  const whatsappNumber = contact.phone.replace(/\s/g, '');
+  const cleanNumber = whatsappNumber.startsWith('0') ? '94' + whatsappNumber.substring(1) : whatsappNumber;
+  const whatsappUrl = `https://wa.me/${cleanNumber}`;
 
   return (
     <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
@@ -33,7 +38,7 @@ const Hero: React.FC = () => {
               <span className="text-slate-800">{name.split(' ').slice(1).join(' ')}</span>
             </h1>
             
-            <h2 className="text-xl md:text-2xl font-semibold text-blue-600 mb-8 max-w-2xl">
+            <h2 className="text-xl md:text-2xl font-semibold text-blue-600 mb-8 max-w-2xl leading-tight">
               {title}
             </h2>
             
@@ -41,10 +46,20 @@ const Hero: React.FC = () => {
               {summary}
             </p>
             
-            <div className="flex flex-wrap justify-center lg:justify-start gap-5 mb-12">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-6 py-4 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all hover:scale-[1.02] active:scale-[0.98] font-bold shadow-lg shadow-emerald-100"
+              >
+                <MessageSquare size={20} />
+                WhatsApp Me
+              </a>
+
               <a 
                 href={`mailto:${contact.email}`} 
-                className="group flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all hover:scale-[1.02] active:scale-[0.98] font-bold shadow-xl shadow-slate-200"
+                className="group flex items-center gap-2 px-6 py-4 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all hover:scale-[1.02] active:scale-[0.98] font-bold shadow-xl shadow-slate-200"
               >
                 Let's Talk
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -55,7 +70,7 @@ const Hero: React.FC = () => {
                 download="Rifath_Ahamed_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all font-bold shadow-sm"
+                className="flex items-center gap-2 px-6 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all font-bold shadow-sm"
               >
                 <Download size={20} />
                 Download CV
@@ -67,9 +82,9 @@ const Hero: React.FC = () => {
                 <div className="p-2 bg-slate-50 rounded-lg text-blue-500"><MapPin size={18} /></div>
                 {contact.location}
               </div>
-              <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 justify-center lg:justify-start hover:text-blue-600 transition-colors">
-                <div className="p-2 bg-slate-50 rounded-lg text-blue-500"><Phone size={18} /></div>
-                {contact.phone}
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 justify-center lg:justify-start hover:text-emerald-600 transition-colors">
+                <div className="p-2 bg-slate-50 rounded-lg text-emerald-500"><MessageSquare size={18} /></div>
+                {contact.phone} (WhatsApp)
               </a>
               {contact.linkedinUrl && (
                 <a href={contact.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 justify-center lg:justify-start hover:text-blue-600 transition-colors sm:col-span-2">
