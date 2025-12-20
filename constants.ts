@@ -100,7 +100,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#",
       demoUrl: "https://webbasedrenovation.infinityfree.me/index.php",
-      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1470&auto=format&fit=crop" 
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/img.png" 
     },
     {
       title: "FMC GPA Calculator",
@@ -111,7 +111,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#",
       demoUrl: "https://fmcs-gpa.vercel.app/",
-      image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1470&auto=format&fit=crop"
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/WhatsApp%20Image%202025-12-20%20at%2011.05.39%20PM.jpeg"
     },
     {
       title: "AI Vital - Resource Hub",
