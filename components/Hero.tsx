@@ -17,6 +17,40 @@ const Hero: React.FC = () => {
   const firstName = name.split(' ')[0];
   const lastName = name.split(' ').slice(1).join(' ');
 
+  // Reusable Image Component to maintain consistency across positions
+  const ProfileImageContent = ({ isMobile = false }: { isMobile?: boolean }) => (
+    <div className={`relative ${isMobile ? 'w-64 h-64 mx-auto my-10' : 'w-72 h-72 md:w-[450px] md:h-[450px]'}`}>
+      {/* Geometric accents */}
+      <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-100 rounded-3xl -rotate-12 -z-10 animate-float"></div>
+      <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-slate-100 rounded-full -z-10"></div>
+      
+      <div 
+        className="relative w-full h-full group cursor-pointer"
+        onClick={() => navigate('/admin')}
+      >
+        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-[2.5rem] rotate-3 opacity-20 group-hover:rotate-6 transition-transform duration-500"></div>
+        
+        <div className="relative w-full h-full overflow-hidden rounded-[2.5rem] border-8 border-white shadow-2xl bg-slate-100 transition-transform duration-500 group-hover:-translate-y-4">
+          <img 
+            src={profileImage} 
+            alt={name}
+            className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+            onError={(e) => {
+              e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0f172a&color=fff&size=512&bold=true`;
+            }}
+          />
+          
+          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-sm">
+            <div className="p-4 bg-white rounded-full text-slate-900 shadow-xl scale-90 group-hover:scale-100 transition-transform duration-500">
+              <Camera size={32} />
+            </div>
+            <p className="mt-4 text-white font-bold tracking-wider text-sm uppercase">Admin Dashboard</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
       {/* Background blobs for visual flair */}
@@ -52,6 +86,11 @@ const Hero: React.FC = () => {
                 </span>
               </div>
             </h1>
+
+            {/* MOBILE ONLY IMAGE: Rendered after the name */}
+            <div className="lg:hidden animate-fade-in [animation-delay:800ms] opacity-0 [animation-fill-mode:forwards]">
+              <ProfileImageContent isMobile={true} />
+            </div>
             
             <h2 className="text-xl md:text-2xl font-semibold text-blue-600 mb-8 max-w-2xl leading-tight animate-slide-up [animation-delay:700ms] opacity-0 [animation-fill-mode:forwards]">
               {title}
@@ -110,38 +149,9 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Image Column */}
-          <div className="flex-1 flex justify-center lg:justify-end animate-fade-in [animation-delay:1500ms] opacity-0 [animation-fill-mode:forwards]">
-            <div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
-              {/* Geometric accents */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-100 rounded-3xl -rotate-12 -z-10 animate-float"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-slate-100 rounded-full -z-10"></div>
-              
-              <div 
-                className="relative w-full h-full group cursor-pointer"
-                onClick={() => navigate('/admin')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-[2.5rem] rotate-3 opacity-20 group-hover:rotate-6 transition-transform duration-500"></div>
-                
-                <div className="relative w-full h-full overflow-hidden rounded-[2.5rem] border-8 border-white shadow-2xl bg-slate-100 transition-transform duration-500 group-hover:-translate-y-4">
-                  <img 
-                    src={profileImage} 
-                    alt={name}
-                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0f172a&color=fff&size=512&bold=true`;
-                    }}
-                  />
-                  
-                  <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-sm">
-                    <div className="p-4 bg-white rounded-full text-slate-900 shadow-xl scale-90 group-hover:scale-100 transition-transform duration-500">
-                      <Camera size={32} />
-                    </div>
-                    <p className="mt-4 text-white font-bold tracking-wider text-sm">ADMIN DASHBOARD</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* DESKTOP ONLY IMAGE COLUMN: Hidden on mobile */}
+          <div className="hidden lg:flex flex-1 justify-center lg:justify-end animate-fade-in [animation-delay:1500ms] opacity-0 [animation-fill-mode:forwards]">
+            <ProfileImageContent />
           </div>
 
         </div>
