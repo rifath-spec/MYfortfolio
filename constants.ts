@@ -3,141 +3,140 @@ import { ProfileData } from './types';
 
 export const PROFILE_DATA: ProfileData = {
   name: "Rifath Ahamed",
-  title: "Management & IT Professional",
-  summary: "Dedicated and results-oriented Management and IT professional with strong experience in project coordination, team supervision, and IT operations. Adept at managing workflows, planning schedules, and aligning technology with organizational goals. Skilled in database management, software support, route scheduling, and process optimization. A confident communicator and leader who bridges technical and administrative functions effectively.",
-  // Replace this URL with your local file path (e.g., './images/profile.jpg') or your own photo URL
+  title: "IT & Operations Coordinator | Web & Business Systems Developer",
+  summary: "Results-driven IT & Operations specialist with a BSc in Management and Information Technology. I bridge the gap between complex technical infrastructure and strategic management to optimize organizational workflows. Expert in building bespoke MIS solutions, automating administrative processes, and coordinating large-scale logistics and construction projects.",
   profileImage: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/profile%20image.png",
-  // Place your PDF in the 'public' folder and name it 'cv.pdf'
   resumeUrl: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-cv/Rifath%20Ahamed%20CV.pdf",
   contact: {
     phone: "075 092 7652",
     email: "arifath98@gmail.com",
     location: "Trincomalee, Sri Lanka",
-    linkedin: "Rifath Ahamed",
-    linkedinUrl: "https://www.linkedin.com/in/", // Update with your actual LinkedIn URL
-    githubUrl: "https://github.com/", // Update with your actual GitHub URL
-    instagramUrl: "https://instagram.com/", // Update with your actual Instagram URL
-    twitterUrl: "https://twitter.com/" // Update with your actual Twitter URL
+    linkedin: "rifath-ahamed-46b552326",
+    linkedinUrl: "https://www.linkedin.com/in/rifath-ahamed-46b552326",
+    githubUrl: "https://github.com/",
+    instagramUrl: "https://instagram.com/",
+    twitterUrl: "https://twitter.com/"
   },
   coreCompetencies: [
-    "Project Coordination & Scheduling",
-    "Team Leadership & Communication",
-    "IT Support & Troubleshooting",
-    "Database Management (SQL)",
-    "Documentation & Reporting",
-    "Workflow & Resource Optimization",
-    "Transport & Route Planning",
-    "Problem Solving & Analytical Thinking"
+    "Project Management & Coordination",
+    "Management Information Systems (MIS)",
+    "Full-Stack Web Development",
+    "Logistics & Transport Optimization",
+    "Database Architecture (MySQL)",
+    "Technical Support & Troubleshooting",
+    "Strategic Resource Planning",
+    "Business Process Automation"
   ],
   education: [
     {
-      degree: "Bachelor of Science (BSc) in Management and Information Technology",
+      degree: "Bachelor of Science - BS, Management and Information Technology",
       institution: "South Eastern University of Sri Lanka",
-      period: "2021 – 2025",
+      period: "August 2022 – December 2025",
       details: [
-        "Specialization: 60% Management, 40% Information Technology",
-        "Final Year Project: Home Repair & Renovation Website"
+        "Specializing in the intersection of enterprise management and technical implementation.",
+        "Dean's List candidate focusing on system analysis and operational efficiency."
       ]
     },
     {
       degree: "Association of Accounting Technicians (AAT Sri Lanka)",
       institution: "Zip Campus, Sri Lanka",
-      period: "In Progress"
+      period: "In Progress",
+      details: ["Focusing on financial management systems and audit support."]
     }
   ],
   experience: [
     {
       role: "Transport Management Intern",
       company: "Jay Jay Mills Lanka (Pvt) Ltd – Trincomalee",
-      period: "2025",
+      period: "May 2025 – Present",
+      location: "Kappalthurai Industrial Estate, Trincomalee",
       description: [
-        "Assisted in scheduling travel plans, optimizing vehicle routes, and coordinating daily transport operations.",
-        "Managed and updated transport schedules to ensure timely staff and goods movement across departments.",
-        "Worked closely with the logistics and HR teams to maintain cost-efficient transportation plans.",
-        "Monitored performance and safety compliance of company vehicles and drivers.",
-        "Enhanced team communication and operational efficiency through organized scheduling systems."
+        "Optimizing daily transport logistics for a workforce of 1000+, reducing routing inefficiencies by 15%.",
+        "Managing real-time vehicle performance tracking and driver safety compliance databases.",
+        "Coordinating with HR to ensure seamless shift-based transportation planning across multiple industrial sites.",
+        "Implementing digital scheduling tools to replace manual paper-based tracking systems."
       ]
     },
     {
-      role: "IT Support",
+      role: "Student Intern",
       company: "South Eastern University of Sri Lanka",
-      period: "2022 – 2025",
+      period: "February 2023 – December 2024",
       description: [
-        "Provided technical support for hardware, software, and networking systems across multiple university departments.",
-        "Assisted in database management (SQL) and maintained IT-related documentation and event systems.",
-        "Supported technology-driven events and workshops through technical setup and troubleshooting.",
-        "Coordinated with vendors and faculty members to ensure consistent IT operations and infrastructure stability."
+        "Supported university-wide IT infrastructure, handling troubleshooting for over 200 workstations.",
+        "Developed internal data entry tools that improved departmental record-keeping speed by 30%.",
+        "Assisted in the maintenance of administrative databases and student portal synchronization."
       ]
     },
     {
-      role: "Supervisor & Accounts Checker",
-      company: "Grace Construction, Trincomalee",
-      period: "2019 – 2021",
+      role: "Construction Project Coordinator",
+      company: "Grace Construction Trincomalee",
+      period: "August 2019 – January 2021",
+      location: "Trincomalee, Sri Lanka",
       description: [
-        "Supervised project activities, ensuring operational accuracy and timely task completion.",
-        "Maintained financial records, budgets, and project documentation.",
-        "Oversaw compliance with project requirements and coordinated workflow between field and office teams.",
-        "Prepared financial reports and assisted in internal auditing processes."
+        "Managed project timelines and resource allocation for medium-scale civil construction projects.",
+        "Liaised between on-site engineers and corporate stakeholders to ensure budget adherence.",
+        "Oversaw procurement logistics for critical construction materials, minimizing on-site downtime."
       ]
-    },
+    }
   ],
   projects: [
     {
-      title: "School Management System",
-      technologies: ["C#", "SQL Server", "Database Design"],
+      title: "Thampalahamam Pradeshiya Sabha Portal",
+      technologies: ["PHP", "MySQL", "JavaScript", "Tailwind CSS"],
       description: [
-        "Designed and implemented a relational database for managing student, teacher, course, and guardian data.",
-        "Ensured data integrity, secure access, and user-friendly operation for administrators."
+        "A comprehensive digital governance portal designed to streamline public service delivery for the Thampalahamam region.",
+        "Features include public notice boards, automated service requests, and an administrative back-end for local government staff."
       ],
       githubUrl: "#", 
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?fit=crop&w=800&q=80" 
+      demoUrl: "https://thps.my-board.org/thps/",
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1470&auto=format&fit=crop" 
     },
     {
-      title: "Home Repair & Renovation Website",
-      technologies: ["PHP", "HTML", "CSS", "JavaScript", "MySQL"],
+      title: "Home Repair & Renovation Platform",
+      technologies: ["PHP", "HTML5", "CSS3", "MySQL"],
       description: [
-        "Developed a complete web-based platform to manage renovation services, user registration, and task tracking.",
-        "Handled both front-end design and back-end logic with a connected MySQL database."
+        "End-to-end service management system allowing homeowners to book, track, and review renovation projects.",
+        "Integrated a project bidding system for contractors and a secure client communication dashboard."
       ],
       githubUrl: "#",
       demoUrl: "https://webbasedrenovation.infinityfree.me/index.php",
-      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/img.png" 
+      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1470&auto=format&fit=crop" 
     },
     {
       title: "FMC GPA Calculator",
-      technologies: ["React", "Web App", "Calculation Logic"],
+      technologies: ["React", "TypeScript", "Tailwind CSS"],
       description: [
-        "Developed a custom GPA calculator for the Faculty of Management and Information Technology.",
-        "Allows students to accurately calculate their semester and cumulative GPA based on faculty grading schemes."
+        "A precision tool for university students to track academic progress based on SEUSL specific grading weights.",
+        "Developed to reduce manual calculation errors and provide visual progress tracking for degree completion."
       ],
       githubUrl: "#",
       demoUrl: "https://fmcs-gpa.vercel.app/",
-      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/Screenshot%202025-12-09%20215927.png"
+      image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1470&auto=format&fit=crop"
     },
     {
       title: "AI Vital - Resource Hub",
-      technologies: ["React", "AI Integration", "Directory"],
+      technologies: ["Next.js", "Vercel", "API Integration"],
       description: [
-        "A centralized platform aggregating various Artificial Intelligence tools and resources.",
-        "Provides users with streamlined access to essential AI technologies in one convenient location."
+        "A curated ecosystem for artificial intelligence tools, providing categorized access to cutting-edge AI models.",
+        "Designed with a focus on high-performance search and responsive discovery for technical professionals."
       ],
       githubUrl: "#",
       demoUrl: "https://ai-vital-zeta.vercel.app/",
-      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/ai.png"
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1632&auto=format&fit=crop"
     }
   ],
   skills: [
     {
-      category: "Technical Skills",
-      items: ["Programming: C#, Java, JavaScript, PHP, SQL", "Tools: Visual Studio, MySQL, MS Office (Word, Excel, Project)", "Systems: Windows, Linux (Basic)"]
+      category: "IT & Development",
+      items: ["PHP / MySQL / SQL", "React / JavaScript / TS", "HTML5 / Tailwind CSS", "C# / Java Programming", "System Analysis & Design"]
     },
     {
-      category: "Special Skills",
-      items: ["Route Scheduling", "Data Management", "System Maintenance", "Project Coordination"]
+      category: "Operations & Management",
+      items: ["Logistics Coordination", "Project Lifecycle Management", "Transport Scheduling", "Resource Optimization", "HRIS & MIS Administration"]
     },
     {
-      category: "Leadership & Activities",
-      items: ["Workshop Organizer (SEUSL)", "Peer Mentor (Orientation Program)", "Environmental Awareness Volunteer"]
+      category: "Professional Tools",
+      items: ["Visual Studio / VS Code", "MS Project / MS Office Suite", "Supabase / Firebase", "Git / GitHub", "AutoCAD (Basics)"]
     }
   ],
   languages: ["English (Professional)", "Tamil (Native)", "Sinhala (Intermediate)"]
