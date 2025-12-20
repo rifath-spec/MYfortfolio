@@ -14,6 +14,9 @@ const Hero: React.FC = () => {
   const cleanNumber = whatsappNumber.startsWith('0') ? '94' + whatsappNumber.substring(1) : whatsappNumber;
   const whatsappUrl = `https://wa.me/${cleanNumber}`;
 
+  const firstName = name.split(' ')[0];
+  const lastName = name.split(' ').slice(1).join(' ');
+
   return (
     <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
       {/* Background blobs for visual flair */}
@@ -24,8 +27,8 @@ const Hero: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
           {/* Text Content */}
-          <div className="flex-1 text-center lg:text-left animate-slide-up">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-blue-700 uppercase bg-blue-50 border border-blue-100 rounded-full">
+          <div className="flex-1 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-blue-700 uppercase bg-blue-50 border border-blue-100 rounded-full animate-fade-in">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -33,20 +36,32 @@ const Hero: React.FC = () => {
               Available for immediate opportunities
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1]">
-              I'm <span className="text-gradient">{name.split(' ')[0]}</span> <br />
-              <span className="text-slate-800">{name.split(' ').slice(1).join(' ')}</span>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] cursor-default">
+              <div className="reveal-container">
+                <span className="inline-block animate-reveal-up [animation-delay:100ms] pb-1">I am </span>
+              </div>
+              <div className="reveal-container ml-3">
+                <span className="inline-block text-gradient animate-reveal-up [animation-delay:300ms] pb-1 hover:scale-105 transition-transform duration-300">
+                  {firstName}
+                </span>
+              </div>
+              <br />
+              <div className="reveal-container">
+                <span className="inline-block text-slate-800 animate-reveal-up [animation-delay:500ms] pb-1 hover:scale-[1.02] transition-transform duration-300">
+                  {lastName}
+                </span>
+              </div>
             </h1>
             
-            <h2 className="text-xl md:text-2xl font-semibold text-blue-600 mb-8 max-w-2xl leading-tight">
+            <h2 className="text-xl md:text-2xl font-semibold text-blue-600 mb-8 max-w-2xl leading-tight animate-slide-up [animation-delay:700ms] opacity-0 [animation-fill-mode:forwards]">
               {title}
             </h2>
             
-            <p className="text-slate-600 text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+            <p className="text-slate-600 text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 animate-slide-up [animation-delay:900ms] opacity-0 [animation-fill-mode:forwards]">
               {summary}
             </p>
             
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12 animate-slide-up [animation-delay:1100ms] opacity-0 [animation-fill-mode:forwards]">
               <a 
                 href={whatsappUrl}
                 target="_blank"
@@ -77,7 +92,7 @@ const Hero: React.FC = () => {
               </a>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-500 font-medium">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-500 font-medium animate-slide-up [animation-delay:1300ms] opacity-0 [animation-fill-mode:forwards]">
               <div className="flex items-center gap-3 justify-center lg:justify-start">
                 <div className="p-2 bg-slate-50 rounded-lg text-blue-500"><MapPin size={18} /></div>
                 {contact.location}
@@ -96,10 +111,10 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Image Column */}
-          <div className="flex-1 flex justify-center lg:justify-end animate-fade-in">
+          <div className="flex-1 flex justify-center lg:justify-end animate-fade-in [animation-delay:1500ms] opacity-0 [animation-fill-mode:forwards]">
             <div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
               {/* Geometric accents */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-100 rounded-3xl -rotate-12 -z-10"></div>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-100 rounded-3xl -rotate-12 -z-10 animate-float"></div>
               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-slate-100 rounded-full -z-10"></div>
               
               <div 
@@ -112,7 +127,7 @@ const Hero: React.FC = () => {
                   <img 
                     src={profileImage} 
                     alt={name}
-                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
                     onError={(e) => {
                       e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0f172a&color=fff&size=512&bold=true`;
                     }}
