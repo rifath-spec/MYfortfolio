@@ -1,30 +1,44 @@
+
 import { createClient } from '@supabase/supabase-js';
 
 export const supabaseUrl = 'https://miyqdfjfphrbusfnijur.supabase.co';
 
-// Robust environment variable access for both Vite and Node environments
-let supabaseKey = 'process.env.SUPABASE_KEY';
+/**
+ * Validates if a string looks like a potential Supabase JWT/Key.
+ * Supabase keys are long strings that don't contain placeholders like "process.env".
+ */
+const isValidSupabaseKey = (key: string | undefined): boolean => {
+  if (!key) return false;
+  if (key.includes('process.env')) return false;
+  if (key === 'ANON_KEY_NOT_FOUND') return false;
+  if (key.length < 40) return false; // Typical Supabase keys are very long
+  return true;
+};
 
-// Check import.meta.env (Vite)
-if (import.meta && (import.meta as any).env) {
-  supabaseKey = (import.meta as any).env.VITE_SUPABASE_KEY || '';
-}
+// Access environment variables with fallbacks
+const getSupabaseKey = (): string => {
+  // 1. Try Vite environment variable
+  if (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_KEY) {
+    return (import.meta as any).env.VITE_SUPABASE_KEY;
+  }
+  
+  // 2. Try Node/Common environment variable
+  if (typeof process !== 'undefined' && process.env?.SUPABASE_KEY) {
+    return process.env.SUPABASE_KEY;
+  }
 
-// Fallback to process.env if available (legacy/standard Node)
-if (!supabaseKey && typeof process !== 'undefined' && process.env) {
-  supabaseKey = process.env.SUPABASE_KEY || 'process.env.SUPABASE_KEY';
-}
+  return '';
+};
 
-// CRITICAL FIX: createClient throws if key is empty. 
-// We use a placeholder to allow the app to initialize even if the Env Var is missing.
-// API calls will fail with 401/403 but the UI will render.
-const finalKey = supabaseKey || 'ANON_KEY_NOT_FOUND';
+const rawKey = getSupabaseKey();
+const isKeyConfigured = isValidSupabaseKey(rawKey);
 
-if (finalKey === 'ANON_KEY_NOT_FOUND') {
-  console.warn('Supabase Key is missing. Please add VITE_SUPABASE_KEY to your .env file.');
-}
+// CRITICAL: If the key is invalid, we use a specific placeholder that Supabase handles better
+// than "process.env.SUPABASE_KEY" which causes the JWS error.
+// However, we still export the client so the app doesn't crash on import.
+export const supabase = createClient(supabaseUrl, isKeyConfigured ? rawKey : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.dummy_key');
 
-export const supabase = createClient(supabaseUrl, finalKey);
+export const isSupabaseReady = isKeyConfigured;
 
 // Helper to get public URLs based on the structure requested
 export const getStorageUrl = (bucket: string, path: string) => {
