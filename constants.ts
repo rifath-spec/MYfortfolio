@@ -89,7 +89,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#", 
       demoUrl: "https://thps.my-board.org/thps/",
-      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/Screenshot%202025-12-20%20231423.png" 
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/Screenshot%202025-12-20%20231423.jpg" 
     },
     {
       title: "Home Repair & Renovation Platform",
