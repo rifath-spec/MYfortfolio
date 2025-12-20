@@ -89,7 +89,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#", 
       demoUrl: "https://thps.my-board.org/thps/",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1470&auto=format&fit=crop" 
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/Screenshot%202025-12-20%20231423.png" 
     },
     {
       title: "Home Repair & Renovation Platform",
@@ -102,6 +102,7 @@ export const PROFILE_DATA: ProfileData = {
       demoUrl: "https://webbasedrenovation.infinityfree.me/index.php",
       image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/img.png" 
     },
+  
     {
       title: "FMC GPA Calculator",
       technologies: ["React", "TypeScript", "Tailwind CSS"],
