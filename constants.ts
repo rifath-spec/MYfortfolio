@@ -122,7 +122,7 @@ export const PROFILE_DATA: ProfileData = {
       ],
       githubUrl: "#",
       demoUrl: "https://ai-vital-zeta.vercel.app/",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1632&auto=format&fit=crop"
+      image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/ai.png"
     }
   ],
   skills: [

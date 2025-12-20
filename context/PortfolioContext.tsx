@@ -16,29 +16,10 @@ interface PortfolioContextType {
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'portfolio_live_data';
-
 export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initialize from localStorage or fallback to constants
-  const [profileData, setProfileData] = useState<ProfileData>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : PROFILE_DATA;
-  });
-  
+  // Initialize from constants only, no local storage caching
+  const [profileData, setProfileData] = useState<ProfileData>(PROFILE_DATA);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Check for session persistence
-  useEffect(() => {
-    const auth = localStorage.getItem('admin_auth');
-    if (auth === 'true') {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
-  // Save to localStorage whenever profileData changes
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(profileData));
-  }, [profileData]);
 
   const refreshFromSupabase = async () => {
     const timestamp = new Date().getTime(); // Cache busting
@@ -64,12 +45,10 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const login = () => {
     setIsAuthenticated(true);
-    localStorage.setItem('admin_auth', 'true');
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('admin_auth');
   };
 
   return (
