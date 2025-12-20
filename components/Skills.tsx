@@ -1,9 +1,11 @@
 
 import React from 'react';
 import { Cpu, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react';
-import { PROFILE_DATA } from '../constants';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Skills: React.FC = () => {
+  const { profileData } = usePortfolio();
+
   return (
     <section id="skills" className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
@@ -20,7 +22,7 @@ const Skills: React.FC = () => {
         {/* Core Competencies - Grid of Badges */}
         <div className="mb-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {PROFILE_DATA.coreCompetencies.map((skill, index) => (
+            {profileData.coreCompetencies.map((skill, index) => (
               <div 
                 key={index} 
                 className="group p-5 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:border-blue-200 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
@@ -36,7 +38,7 @@ const Skills: React.FC = () => {
 
         {/* Detailed Skills Categories */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {PROFILE_DATA.skills.map((category, index) => (
+          {profileData.skills.map((category, index) => (
             <div key={index} className="glass-card border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-xl font-bold text-slate-900">
@@ -68,7 +70,7 @@ const Skills: React.FC = () => {
                 Linguistic Proficiency
               </h3>
               <div className="flex flex-wrap gap-8">
-                {PROFILE_DATA.languages.map((lang, index) => (
+                {profileData.languages.map((lang, index) => (
                   <div key={index} className="flex items-center gap-3 bg-white/5 px-5 py-2.5 rounded-xl border border-white/10">
                     <div className="w-2.5 h-2.5 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(96,165,250,0.5)]"></div>
                     <span className="font-semibold text-slate-200">{lang}</span>

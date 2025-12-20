@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ProfileData, Project } from '../types';
 import { PROFILE_DATA } from '../constants';
@@ -15,8 +16,15 @@ interface PortfolioContextType {
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'portfolio_live_data';
+
 export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [profileData, setProfileData] = useState<ProfileData>(PROFILE_DATA);
+  // Initialize from localStorage or fallback to constants
+  const [profileData, setProfileData] = useState<ProfileData>(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : PROFILE_DATA;
+  });
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Check for session persistence
@@ -27,16 +35,12 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   }, []);
 
-  // In a full implementation, you would fetch JSON data from a Supabase Table here.
-  // For now, we will construct the URLs for assets based on the Supabase Storage convention
-  // effectively "refreshing" the view to point to Supabase if files exist.
+  // Save to localStorage whenever profileData changes
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(profileData));
+  }, [profileData]);
+
   const refreshFromSupabase = async () => {
-    // We optimistically update the URLs to point to Supabase Storage
-    // Assuming the user has uploaded files named 'profile.jpg' and 'cv.pdf'
-    
-    // Note: In a production app, you might verify if the file exists using supabase.storage.list() 
-    // before switching the URL, but for this portfolio customization request:
-    
     const timestamp = new Date().getTime(); // Cache busting
     
     setProfileData(prev => ({

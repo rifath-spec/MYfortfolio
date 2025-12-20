@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
-import { PROFILE_DATA } from '../constants';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Experience: React.FC = () => {
+  const { profileData } = usePortfolio();
+  
   return (
     <section id="experience" className="py-20 bg-white">
       <div className="container mx-auto px-6 md:px-12">
@@ -12,7 +15,7 @@ const Experience: React.FC = () => {
         </h2>
         
         <div className="space-y-12">
-          {PROFILE_DATA.experience.map((job, index) => (
+          {profileData.experience.map((job, index) => (
             <div key={index} className="relative pl-8 md:pl-0">
               {/* Timeline line for mobile */}
               <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-slate-200 md:hidden"></div>

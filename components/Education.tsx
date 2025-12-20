@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { GraduationCap } from 'lucide-react';
-import { PROFILE_DATA } from '../constants';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Education: React.FC = () => {
+  const { profileData } = usePortfolio();
+
   return (
     <section id="education" className="py-20 bg-slate-50">
       <div className="container mx-auto px-6 md:px-12">
@@ -12,7 +15,7 @@ const Education: React.FC = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {PROFILE_DATA.education.map((edu, index) => (
+          {profileData.education.map((edu, index) => (
             <div key={index} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
               <h3 className="text-lg font-bold text-slate-900 mb-2">{edu.degree}</h3>
               <div className="text-blue-600 font-medium mb-4">{edu.institution}</div>
