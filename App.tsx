@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -6,6 +7,7 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Projects from './components/Projects';
+import Documents from './components/Documents';
 import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
 import { PortfolioProvider, usePortfolio } from './context/PortfolioContext';
@@ -17,6 +19,7 @@ const MainSite = () => (
     <Skills />
     <Education />
     <Projects />
+    <Documents />
   </Layout>
 );
 

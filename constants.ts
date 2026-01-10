@@ -6,7 +6,7 @@ export const PROFILE_DATA: ProfileData = {
   title: "Graduate – IT & Operations | MIS, HR & Financial Support | Web & Business Systems Development",
   summary: "Results-driven IT & Operations specialist with a BSc in Management and Information Technology. I bridge the gap between complex technical infrastructure and strategic management to optimize organizational workflows. Expert in building bespoke MIS solutions, automating administrative processes, and coordinating large-scale logistics and construction projects.",
   profileImage: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/profile%20image.png",
-  resumeUrl: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-cv/rifath%20ahamed.pdf",
+  resumeUrl: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-cv/Rifath%20Ahamed%20CV.pdf",
   contact: {
     phone: "075 092 7652",
     email: "arifath98@gmail.com",
@@ -102,7 +102,6 @@ export const PROFILE_DATA: ProfileData = {
       demoUrl: "https://webbasedrenovation.infinityfree.me/index.php",
       image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/img.png" 
     },
-  
     {
       title: "FMC GPA Calculator",
       technologies: ["React", "TypeScript", "Tailwind CSS"],
@@ -124,6 +123,24 @@ export const PROFILE_DATA: ProfileData = {
       githubUrl: "#",
       demoUrl: "https://ai-vital-zeta.vercel.app/",
       image: "https://miyqdfjfphrbusfnijur.supabase.co/storage/v1/object/public/portfolio-images/ai.png"
+    }
+  ],
+  documents: [
+    {
+      id: "cert-1",
+      title: "Bachelor of Science - MIT (Expected)",
+      category: "Transcript",
+      issuer: "South Eastern University of Sri Lanka",
+      date: "2025",
+      url: "#"
+    },
+    {
+      id: "cert-2",
+      title: "Accounting Technicians Certificate",
+      category: "Certification",
+      issuer: "AAT Sri Lanka",
+      date: "2023",
+      url: "#"
     }
   ],
   skills: [

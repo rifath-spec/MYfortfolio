@@ -72,6 +72,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Skills', href: '#skills' },
     { name: 'Education', href: '#education' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Documents', href: '#documents' },
   ];
 
   return (

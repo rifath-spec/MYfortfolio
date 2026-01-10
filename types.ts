@@ -34,6 +34,15 @@ export interface Project {
   image?: string;
 }
 
+export interface Document {
+  id: string;
+  title: string;
+  category: 'Certification' | 'Transcript' | 'Award' | 'Other';
+  issuer: string;
+  date: string;
+  url: string;
+}
+
 export interface SkillCategory {
   category: string;
   items: string[];
@@ -50,6 +59,7 @@ export interface ProfileData {
   education: Education[];
   experience: Experience[];
   projects: Project[];
+  documents: Document[];
   skills: SkillCategory[];
   languages: string[];
 }
